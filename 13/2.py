@@ -1,0 +1,4 @@
+
+add = lambda a, b: a + b
+
+print(add(3, 7))  # Вывод: 10
