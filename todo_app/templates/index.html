@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список дел</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 { color: #1a73e8; text-align: center; }
+        h2 { color: #333; font-size: 1.3em; margin-top: 25px; }
+        ul { list-style: none; padding: 0; }
+        li {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task-text.completed {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+        .task-date { font-size: 0.75em; color: #6c757d; margin-left: 10px; }
+        .btn-complete { background: #28a745; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; }
+        .btn-delete { background: #dc3545; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; }
+        form { display: flex; gap: 10px; margin-top: 15px; }
+        input { flex-grow: 1; padding: 10px; border-radius: 8px; border: 1px solid #ddd; }
+        button { background: #1a73e8; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+        .clear-btn { background: #6c757d; width: 100%; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Мой список дел</h1>
+
+        {% if tasks %}
+            <ul>
+                {% for task in tasks %}
+                    <li>
+                        <div class="task-text {% if task.completed %}completed{% endif %}">
+                            {{ task.text }}
+                            <span class="task-date">{{ task.date }}</span>
+                        </div>
+                        <div>
+                            {% if not task.completed %}
+                                <a href="/complete/{{ loop.index0 }}" class="btn-complete">✓ Готово</a>
+                            {% endif %}
+                            <a href="/delete/{{ loop.index0 }}" class="btn-delete">🗑 Удалить</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p style="text-align:center; color:gray;">🎉 Нет задач! Добавьте новую.</p>
+        {% endif %}
+
+        <h2>➕ Добавить задачу</h2>
+        <form method="POST" action="/add">
+            <input type="text" name="task" placeholder="Новая задача..." required>
+            <button type="submit">Добавить</button>
+        </form>
+
+        {% if tasks %}
+            <a href="/clear"><button class="clear-btn">🗑 Очистить всё</button></a>
+        {% endif %}
+    </div>
+</body>
+</html>
