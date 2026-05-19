@@ -1,0 +1,28 @@
+# Личный дневник
+
+Веб-приложение на Flask.
+
+## Запуск
+```bash
+pip install flask
+python app.py
+
+---
+
+## Проверь, что все файлы на месте
+
+```bash
+ls -la
+ls -la templates/
+ls -la static/
+cd /workspaces/python_OOP_is31/personal-diary
+cat > static/style.css << 'EOF'
+body { font-family: Arial; background: #f4f4f9; margin: 0; padding: 20px; }
+.container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 15px; }
+h1, h2 { color: #2c3e50; }
+nav a { margin-right: 15px; text-decoration: none; color: #3498db; }
+input, textarea { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; }
+button { background: #3498db; color: white; border: none; padding: 8px 15px; cursor: pointer; }
+.delete { background: #e74c3c; }
+.card { border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-bottom: 15px; }
+footer { text-align: center; margin-top: 30px; color: #7f8c8d; }
