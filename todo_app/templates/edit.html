@@ -1,0 +1,12 @@
+cat > templates/edit.html << 'EOF'
+{% extends "base.html" %}
+{% block content %}
+<h2>✏ Редактировать задачу</h2>
+<form method="POST">
+    <label>Текст задачи:</label>
+    <input type="text" name="text" value="{{ task.text }}" required>
+    <button type="submit">Сохранить</button>
+    <a href="/">Отмена</a>
+</form>
+{% endblock %}
+EOF

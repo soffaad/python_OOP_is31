@@ -1,0 +1,39 @@
+mkdir -p static
+cat > static/style.css << 'EOF'
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+h1 { color: #1a73e8; text-align: center; }
+ul { list-style: none; padding: 0; }
+li {
+    background: #f8f9fa;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.completed { text-decoration: line-through; color: gray; }
+.btn {
+    background: #1a73e8;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btn-del { background: #dc3545; }
+form { display: flex; gap: 10px; margin-top: 20px; }
+input { flex: 1; padding: 8px; }
+button { background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 5px; }
+.clear-btn { background: #6c757d; width: 100%; margin-top: 15px; }
+EOF
