@@ -1,0 +1,17 @@
+cat > detail.html << 'EOF'
+{% extends "base.html" %}
+{% block content %}
+<div class="entry-detail">
+    <h2>{{ entry.title }}</h2>
+    <small>{{ entry.date }}</small>
+    <p>{{ entry.content|replace('\n', '<br>')|safe }}</p>
+    <div class="actions">
+        <a href="/edit/{{ entry.id }}">✏ Редактировать</a>
+        <form method="POST" action="/delete/{{ entry.id }}" style="display:inline;">
+            <button type="submit" class="delete-btn">🗑 Удалить</button>
+        </form>
+        <a href="/">← На главную</a>
+    </div>
+</div>
+{% endblock %}
+EOF

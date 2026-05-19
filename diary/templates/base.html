@@ -1,0 +1,31 @@
+cat > base.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Личный дневник</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📓 Личный дневник</h1>
+            <nav>
+                <a href="/">Главная</a> |
+                <a href="/add">Новая запись</a>
+            </nav>
+            <form action="/search" method="GET" class="search">
+                <input type="text" name="q" placeholder="Поиск по заголовкам...">
+                <button type="submit">🔍</button>
+            </form>
+            <a href="/filter/week">📅 За неделю</a>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p>© Кубакаева.С.А - Личный дневник</p>
+        </footer>
+    </div>
+</body>
+</html>
+EOF

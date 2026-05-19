@@ -1,0 +1,14 @@
+cat > edit.html << 'EOF'
+{% extends "base.html" %}
+{% block content %}
+<h2>Редактирование записи</h2>
+<form method="POST">
+    <label>Заголовок:</label>
+    <input type="text" name="title" value="{{ entry.title }}" required>
+    <label>Текст:</label>
+    <textarea name="content" rows="10" required>{{ entry.content }}</textarea>
+    <button type="submit">Сохранить</button>
+    <a href="/">Отмена</a>
+</form>
+{% endblock %}
+EOF
